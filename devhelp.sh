@@ -1,8 +1,21 @@
 declare -A options
 
-options["express"]="helpers/express.sh $2"
+# Install guide .. 
+# create the file in 
+# $ sudo gedit /usr/bin/devhelp
+# add the below code to the "devhelp" file, basically add the path to devhelp folder
+# /home/yash/Desktop/myapps/devhelp/devhelp.sh $1 $2
+# save the file
+# $ sudo chmod +x /usr/bin/devhelp
+# done !!
+# Now run the devhelp from anywhere 
 
-${options[$1]}
+# get the current directory of this bash script 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+options["express"]="helpers/express.sh"
+
+$SCRIPT_DIR/${options[$1]} $2
 
 if [[ $1 == "--list" ]];
 then 
