@@ -248,7 +248,8 @@ hint : ${hint["express-graphql"]}
 
 install packages to setup graphql
 
-$ npm i nodemon express express-graphql @graphql-tools 
+$ npm i nodemon express express-graphql graphql-tools cors 
+$ npm init -y
 
 Create the folder structure as
 (i) models : to map javascipt object with database so that we can perform database operations
