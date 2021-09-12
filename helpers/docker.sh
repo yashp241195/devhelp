@@ -49,7 +49,7 @@ $ docker build -t myimage .
 
 "
 
-hint["docker-compose"] = "Create servers with docker-composer"
+hint["docker-compose"]="Create servers with docker-composer"
 helper["docker-compose"]="
 hint : ${hint["docker-compose"]}
 

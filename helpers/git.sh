@@ -43,7 +43,8 @@ $ git merge branchB
 
 "
 
-hint["git-github"] = "Pushing the code to github"
+hint["git-github"]="Pushing the code to github"
+
 helper["git-github"]="
 hint : ${hint["git-github"]}
 

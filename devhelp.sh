@@ -15,30 +15,24 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 options["express"]="helpers/express.sh"
 options["react"]="helpers/react.sh"
+options["git"]="helpers/git.sh"
+options["docker"]="helpers/docker.sh"
 
 echo "for faster copy paste output from terminal with gedit use below : "
 echo "command | gedit - "
 echo "eg. devhelp --list | gedit -"
 
+X=$SCRIPT_DIR/${options[$1]}   
 
-if [[ $1 == "" ]];
+if [[ -f $X ]];
 then
-    echo "Give some inputs"  
-else 
-    $SCRIPT_DIR/${options[$1]} $2       
+    chmod +x $X
+    $X $2  
 fi
-
-
 
 if [[ $1 == "--list" ]];
 then 
 for i in "${!options[@]}"; do echo " $i "; done
-elif [[ $1 == "--help" ]];
-then
-echo "
-Welcome to devhelp, a command line helper tool for faster development
---list : list of all helpers
-"
 fi
 
 
