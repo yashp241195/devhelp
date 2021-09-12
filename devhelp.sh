@@ -20,10 +20,15 @@ echo "for faster copy paste output from terminal with gedit use below : "
 echo "command | gedit - "
 echo "eg. devhelp --list | gedit -"
 
+
 if [[ $1 == "" ]];
 then
-    $SCRIPT_DIR/${options[$1]} $2
+    echo "give some inputs"  
+else 
+    $SCRIPT_DIR/${options[$1]} $2       
 fi
+
+
 
 if [[ $1 == "--list" ]];
 then 
