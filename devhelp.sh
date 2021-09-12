@@ -10,12 +10,16 @@ declare -A options
 # done !!
 # Now run the devhelp from anywhere 
 
-# get the current directory of this bash script 
+# Get the current directory of this bash script 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 options["express"]="helpers/express.sh"
+options["react"]="helpers/react.sh"
 
-$SCRIPT_DIR/${options[$1]} $2
+if [[ $1 == "" ]];
+then
+    $SCRIPT_DIR/${options[$1]} $2
+fi
 
 if [[ $1 == "--list" ]];
 then 
