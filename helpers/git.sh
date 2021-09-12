@@ -14,6 +14,12 @@ $ git add file.txt
 // add all files in the directory with
 $ git add .
 
+// ignore files for commit with .gitignore
+// by mentioning things you wish to ignore
+
+// inside .gitignore (for example in any node project)
+node_modules
+
 // check which branch you are presently in
 $ git branch --list
 
