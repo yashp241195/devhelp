@@ -259,7 +259,7 @@ Create the folder structure as
 
 $ mkdir graphql
 $ cd graphql
-$ mkdir schema 
+$ mkdir schema models 
 $ cd schema
 $ touch main-resolver.js main-type.js
 
