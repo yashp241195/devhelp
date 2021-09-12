@@ -23,7 +23,7 @@ echo "eg. devhelp --list | gedit -"
 
 if [[ $1 == "" ]];
 then
-    echo "give some inputs"  
+    echo "Give some inputs"  
 else 
     $SCRIPT_DIR/${options[$1]} $2       
 fi
