@@ -248,7 +248,7 @@ hint : ${hint["express-graphql"]}
 
 install packages to setup graphql
 
-$ npm i nodemon express express-graphql graphql-tools cors 
+$ npm i nodemon express graphql express-graphql graphql-tools cors morgan
 $ npm init -y
 
 Create the folder structure as
@@ -268,6 +268,8 @@ $ touch main-resolver.js main-type.js
 const express = require('express')
 const morgan  = require('morgan')
 const cors = require('cors')
+
+const app = express()
 
 app.use(cors())
 app.use(morgan('dev'))
