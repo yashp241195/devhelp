@@ -5,62 +5,85 @@ hint["docker-basic"]="Create and Upload docker container"
 helper["docker-basic"]="
 hint : ${hint["docker-basic"]}
 
-// initialize the folder as git repository
-$ git init
+// check if docker installed or not
+$ docker version 
 
-// add particular file to git 
-$ git add file.txt
+// run will get the image from docker-hub if not present locally 
+$ docker run hello-world
 
-// add all files in the directory with
-$ git add .
+// list all docker images available locally 
+$ docker image --list
 
-// check which branch you are presently in
-$ git branch --list
+// -d - run the container in detached mode (in the background)
+// -p 80:80 - map port 80 of the host to port 80 in the container
+// docker/getting-started - the image to use
 
-// commit to git current branch
-$ git commit -m 'first commit'
+$ docker run -d -p 80:80 docker/getting-started
 
-// Create the branch
-$ git branch mybranch
+// see the running docker containers
+$ docker ps
 
-// Delete the branch 
-$ git branch -d mybranch
+// stop the container
+$ docker stop <the-container-id>
 
-// Switch to mybranch
-$ git checkout mybranch
+// remove the container
+$ docker rm <the-container-id>
 
-// merge branchA from branchB
-$ git checkout branchA
-// switched to branchA ..
-$ git merge branchB
-// branch B is merged into branch A 
+// Building the image from current directory
+
+// .dockerignore will have all the files you wish not to include
+node_modules
+
+// inside Dockerfile
+FROM node:16-alpine
+WORKDIR /app
+COPY package.json /app
+RUN npm install -g nodemon
+RUN npm install 
+COPY . /app
+CMD [ 'nodemon', 'index.js' ]
+EXPOSE 8080
+
+// build the image with tag myimage
+$ docker build -t myimage .
 
 "
 
-hint["git-github"] = "Pushing the code to github"
-helper["git-github"]="
-hint : ${hint["git-github"]}
+hint["docker-compose"] = "Create servers with docker-composer"
+helper["docker-compose"]="
+hint : ${hint["docker-compose"]}
 
-// add the remote url to origin variable (SSH)
-$ git remote add origin git@github.com:yashp241195/devhelp.git
+version: '3'
+services:
+  api-server:
+    build: .
+    image: api-server
+    ports:
+      - '5000:8080'
+    networks:
+      - mern-app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:3.6.19-xenial
+    ports:
+      - "27017:27017"
+    networks:
+      - mern-app
+    volumes:
+      - mongo-data:/data/db
+networks:
+  mern-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
 
-// if origin already exists you can remove origin and add new origin again
-$ git remote remove origin
+// start the containers with the above configurations
+$ docker-compose up
 
-// create the SSH Keys pair for committing to github
-ssh-keygen -t ed25519 -C 'git@github.com:yashp241195/devhelp.git'
-
-// this will create two keys github (private) and github.pub (public) keys.
-// add key.pub data to github account key (private) into your local directory
-// from where you want to push the code to your github
-
-$  eval ssh-agent
-$  ssh-add /home/yash/Desktop/myapps/keys/github
-
-// pushing the files into the main branch
-$ git push origin main
-
-
+// stop the containers started with docker-compose
+$ docker-compose down
 "
 
 echo "${helper[$1]}"
