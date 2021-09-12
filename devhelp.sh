@@ -16,6 +16,10 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 options["express"]="helpers/express.sh"
 options["react"]="helpers/react.sh"
 
+echo "for faster copy paste output from terminal with gedit use below : "
+echo "command | gedit - "
+echo "eg. devhelp --list | gedit -"
+
 if [[ $1 == "" ]];
 then
     $SCRIPT_DIR/${options[$1]} $2
