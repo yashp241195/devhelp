@@ -41,11 +41,25 @@ hint["git-github"] = "Pushing the code to github"
 helper["git-github"]="
 hint : ${hint["git-github"]}
 
-// add the remote url to origin variable
-$ git remote add origin http://github.com/user/repo
+// add the remote url to origin variable (SSH)
+$ git remote add origin git@github.com:yashp241195/devhelp.git
+
+// if origin already exists you can remove origin and add new origin again
+$ git remote remove origin
+
+// create the SSH Keys pair for committing to github
+ssh-keygen -t ed25519 -C 'git@github.com:yashp241195/devhelp.git'
+
+// this will create two keys github (private) and github.pub (public) keys.
+// add key.pub data to github account key (private) into your local directory
+// from where you want to push the code to your github
+
+$  eval ssh-agent
+$  ssh-add /home/yash/Desktop/myapps/keys/github
 
 // pushing the files into the main branch
 $ git push origin main
+
 
 "
 
