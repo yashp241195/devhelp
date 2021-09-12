@@ -20,8 +20,6 @@ $ git branch --list
 // commit to git current branch
 $ git commit -m 'first commit'
 
-
-
 // Create the branch
 $ git branch mybranch
 
@@ -31,10 +29,25 @@ $ git branch -d mybranch
 // Switch to mybranch
 $ git checkout mybranch
 
-
+// merge branchA from branchB
+$ git checkout branchA
+// switched to branchA ..
+$ git merge branchB
+// branch B is merged into branch A 
 
 "
 
+hint["git-github"] = "Pushing the code to github"
+helper["git-github"]="
+hint : ${hint["git-github"]}
+
+// add the remote url to origin variable
+$ git remote add origin http://github.com/user/repo
+
+// pushing the files into the main branch
+$ git push origin main
+
+"
 
 echo "${helper[$1]}"
 
