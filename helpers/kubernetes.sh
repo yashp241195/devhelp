@@ -55,7 +55,7 @@ $ minikube tunnel
 
 
 ### main.yaml
-```
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -64,7 +64,7 @@ spec:
   selector:
     app: express-test-app
   ports:
-  - protocol: "TCP"
+  - protocol: \"TCP\"
     port: 6100
     targetPort: 3010
   type: LoadBalancer
@@ -91,19 +91,18 @@ spec:
         ports:
         - containerPort: 3010
 
-```
+
 ### Dockerfile
 
-```
 FROM node:16-alpine
 WORKDIR /app
 COPY package.json /app
 RUN npm install -g nodemon
 RUN npm install 
 COPY . /app
-CMD [ "nodemon", "index.js" ]
+CMD [ \"nodemon\", \"index.js\" ]
 EXPOSE 3010
-```
+
 ### .dockerignore
 
 node_modules
