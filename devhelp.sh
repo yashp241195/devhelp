@@ -17,6 +17,7 @@ options["express"]="helpers/express.sh"
 options["react"]="helpers/react.sh"
 options["git"]="helpers/git.sh"
 options["docker"]="helpers/docker.sh"
+options["kubernetes"]="helpers/kubernetes.sh"
 
 echo "for faster copy paste output from terminal with gedit use below : "
 echo "command | gedit - "

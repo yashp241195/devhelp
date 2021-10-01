@@ -64,6 +64,15 @@ ssh-keygen -t ed25519 -C 'git@github.com:yashp241195/devhelp.git'
 $  eval ssh-agent
 $  ssh-add /home/yash/Desktop/myapps/keys/github
 
+github
+
+$ sudo env SSH_AUTH_SOCK="$SSH_AUTH_SOCK" ssh-add /home/yash/Desktop/myapps/keys/github
+
+gitlab 
+
+$ sudo env SSH_AUTH_SOCK="$SSH_AUTH_SOCK" ssh-add /home/yash/Desktop/myapps/keys_gl/glkey
+
+
 // pushing the files into the main branch
 $ git push origin main
 
